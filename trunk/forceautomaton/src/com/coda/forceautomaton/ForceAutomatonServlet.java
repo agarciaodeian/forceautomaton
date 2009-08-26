@@ -91,7 +91,7 @@ public class ForceAutomatonServlet extends AbstractRobotServlet
 									"a.Phone, " + 
 									"a.Website " + 
 								"from Account a " + 
-								"where a.Name Like '%" + accountName + "%' limit 1";							
+								"where a.Name Like '%" + escapedAccountName + "%' limit 1";							
 							QueryResult resultSet = connection.query(soql);
 							SObject[] records = resultSet.getRecords();
 							if(records.length==1)
