@@ -60,19 +60,20 @@ public class ForceAutomatonServlet extends AbstractRobotServlet
 				Wavelet wavelet = bundle.getWavelet();				
 				Blip blip = wavelet.appendBlip();
 				TextView textView = blip.getDocument();
-				textView.append("ForceAutomoton online!");
+				textView.append("ForceAutomaton online!");
 			}
 			
 			for (Event e: bundle.getEvents()) 
 			{
 				if(e.getType() == EventType.BLIP_SUBMITTED)
 				{								
-					Blip blip = e.getBlip().createChild();
-					TextView textView = blip.getDocument();
 					String blipText = e.getBlip().getDocument().getText();
 					ArrayList<String> accountNames = parseAccounts(blipText);
 					if(accountNames.size()>0)
 					{
+						LOG.info("Found accounts " + accountNames);
+						Blip blip = e.getBlip().createChild();
+						TextView textView = blip.getDocument();
 						PartnerConnection connection = getConnected();
 						for(String accountName : accountNames)
 						{
@@ -90,7 +91,7 @@ public class ForceAutomatonServlet extends AbstractRobotServlet
 									"a.Phone, " + 
 									"a.Website " + 
 								"from Account a " + 
-								"where a.Name Like '%" + escapedAccountName + "%' limit 1";							
+								"where a.Name Like '%" + accountName + "%' limit 1";							
 							QueryResult resultSet = connection.query(soql);
 							SObject[] records = resultSet.getRecords();
 							if(records.length==1)
@@ -110,6 +111,10 @@ public class ForceAutomatonServlet extends AbstractRobotServlet
 								textView.append("I am not able to find account '"+accountName+"'");
 							}
 						}
+					}
+					else
+					{
+						LOG.info("Not found accounts in '" + blipText + "'");
 					}
 				}
 			}
