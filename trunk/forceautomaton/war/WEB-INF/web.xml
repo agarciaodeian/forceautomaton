@@ -6,11 +6,11 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<context-param>
 		<param-name>salesforce.username</param-name>
-		<param-value>andrew.fawcett@7coda.com</param-value>
+		<param-value>username</param-value>
 	</context-param>	
 	<context-param>
 		<param-name>salesforce.password</param-name>
-		<param-value>codasfdc2vDgsm0FcKII69K2WCgXHOflTg</param-value>
+		<param-value>passwordtoken</param-value>
 	</context-param>
 	<servlet>
 		<servlet-name>ForceAutomoton</servlet-name>
