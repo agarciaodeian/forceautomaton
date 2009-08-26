@@ -142,6 +142,7 @@ public class ForceAutomatonServlet extends AbstractRobotServlet
 	 */
 	private PartnerConnection getConnected() throws ConnectionException
 	{
+		// TODO: Investigation oAuth API and use with Force.com API's
 		PartnerConnection connection = null;
 		String userName = getServletContext().getInitParameter("salesforce.username");
 		String password = getServletContext().getInitParameter("salesforce.password");		
