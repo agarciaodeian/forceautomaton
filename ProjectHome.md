@@ -1,0 +1,2 @@
+# Force Automaton #
+A small demonstration of a Google Wave robot pulling data (Accounts initially) from the Force.com platform using the Force.com Web Service Connector (http://code.google.com/p/sfdc-wsc/).
